@@ -1,0 +1,24 @@
+# Python
+email-productivity-agent/__pycache__/
+email-productivity-agent/*.py[cod]
+email-productivity-agent/venv/
+email-productivity-agent/env/
+email-productivity-agent/.env
+email-productivity-agent/data/*.db
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
