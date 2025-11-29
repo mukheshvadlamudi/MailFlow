@@ -1,5 +1,5 @@
 from backend.config import settings
-
+# Updated: 2025-11-29
 class LLMService:
     def __init__(self):
         self.provider = settings.LLM_PROVIDER

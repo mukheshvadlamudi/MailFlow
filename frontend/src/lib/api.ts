@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://mailflow-backend-yod9.onrender.com';
+const API_BASE_URL = 'http://localhost:8000';
 
 // Email functions
 export const getEmails = async () => {
