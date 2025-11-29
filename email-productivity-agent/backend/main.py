@@ -243,3 +243,11 @@ async def root():
 async def health():
     return {"status": "healthy"}
 app.include_router(drafts.router, prefix="/api/drafts", tags=["Drafts"])
+@app.on_event("startup")
+async def startup_event():
+    from backend.database.init_db import init_database
+    try:
+        init_database()
+        print("Database initialized successfully")
+    except Exception as e:
+        print(f"Database init: {e}")
