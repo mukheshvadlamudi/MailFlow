@@ -1,8 +1,20 @@
+<div align="center">
+
 # MailFlow
 
-An email productivity demo that turns a sample inbox into categorized messages, action items, and editable reply drafts. MailFlow combines a FastAPI backend, SQLite storage, a React interface, and prompt templates that you can change without editing the processing code.
+**Turn a sample inbox into a clearer list of next steps.**
 
-**Status:** portfolio prototype. The repository uses a seeded inbox; it does not connect to Gmail or Outlook, and saving a draft does not send an email.
+Email categorization, action extraction, and editable drafts with prompts you control.
+
+[Quick start](#run-locally) · [Architecture](#how-it-works) · [Development](#development) · [Contributing](#contributing)
+
+</div>
+
+![MailFlow workflow: sample emails and prompts, processing with Groq, and human review of actions and drafts](docs/assets/overview.svg)
+
+MailFlow is a full-stack email productivity demo with a React interface, FastAPI backend, and SQLite database. Use its seeded inbox to explore how editable prompts turn email content into categories and action items, then review and save reply drafts.
+
+**Project status:** portfolio prototype. The inbox is seeded sample data. There is no Gmail or Outlook connection, and saving a draft does not send an email.
 
 ## What you can do
 
@@ -56,11 +68,12 @@ Open [http://localhost:8080](http://localhost:8080). Use `localhost` for the bro
 
 ## How it works
 
-```text
-Seeded email inbox → prompt templates → Groq → categories / action items / drafts
-                           ↑                          ↓
-                     React interface ← FastAPI ← SQLite
-```
+![MailFlow architecture showing React, FastAPI, Groq, SQLite, sample fixtures, and processing results](docs/assets/architecture.svg)
+
+[Editable Draw.io diagram](docs/assets/architecture.drawio) · [PNG version](docs/assets/architecture.png)
+
+React calls the FastAPI routes. The backend loads sample emails and prompt templates from SQLite, calls Groq for AI processing, parses the results, and stores categories and action items. Draft routes separately create and update saved reply text; there is no outbound mail service.
+
 
 The backend currently forces `LLM_PROVIDER=groq` in `backend/config.py`. Other provider settings exist but are not implemented as working alternatives in the service.
 
